@@ -20,7 +20,7 @@
           <param name="state_following_offset">0.0</param>
         </xacro:if>
         <xacro:unless value="${use_fake_hardware}">
-          <plugin>cnr::comau::ComauC5GopenHw</plugin>
+          <plugin>cnr/comau/ComauC5GopenHw</plugin>
           <param name="mqtt_broker_ip">${mqtt_broker_ip}</param>
           <param name="mqtt_client_id">${mqtt_client_id}</param>
           <param name="mqtt_port">${mqtt_port}</param>

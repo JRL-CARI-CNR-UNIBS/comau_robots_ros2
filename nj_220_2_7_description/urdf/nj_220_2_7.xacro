@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:macro name="nj_220_2_7" params="prefix:='' interface:=hardware_interface/EffortJointInterface">
+  <xacro:macro name="nj_220_2_7" params="prefix:='' interface:=hardware_interface/EffortJointInterface use_fake_hardware">
 
     <xacro:include filename="$(find nj_220_2_7_description)/urdf/nj_220_2_7_robot.xacro" />
     <xacro:nj_220_2_7_robot prefix="${prefix}"/>
@@ -10,6 +10,7 @@
 
     <xacro:include filename="$(find nj_220_2_7_description)/urdf/nj_220_2_7_ros2_control.xacro" />
     <xacro:nj_220_2_7_ros2_control prefix="${prefix}" 
-                                   name="nj_220_2_7"/>
+                                   name="nj_220_2_7"
+                                   use_fake_hardware="${use_fake_hardware}"/>
   </xacro:macro>
 </robot>

@@ -4,8 +4,10 @@
 
 <xacro:property name="prefix" value="''" />
 
+<xacro:arg name="use_fake_hardware" default="true"/>
+
 <link name="world"/>
-  <xacro:nj_220_2_7 prefix="${prefix}"/>
+  <xacro:nj_220_2_7 prefix="${prefix}" use_fake_hardware="$(arg use_fake_hardware)"/>
   <joint name="${prefix}world_to_base_link" type="fixed">
       <origin
         xyz="0 0 0"
