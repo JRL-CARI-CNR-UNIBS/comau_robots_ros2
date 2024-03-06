@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="nj_220_2_7_ros2_control" params="name
+                                                      prefix
+                                                      use_fake_hardware:=true
+                                                      mqtt_broker_ip:=10.7.7.246
+                                                      mqtt_client_id:=comau_c5gopen_hw_mqtt_client
+                                                      mqtt_port:=1883
+                                                      mqtt_loop_timeout:=1
+                                                      topic_fdb_pos_name:=robot/arm1/real_joints_positions
+                                                      topic_fdb_vel_name:=robot/arm1/real_joints_velocities
+                                                      topic_cmd_name:=robot/arm1/target_joints_trajectory
+                                                      read_only:=false">
+
+    <ros2_control name="${name}" type="system">
+      <hardware>
+        <xacro:if value="${use_fake_hardware}">
+          <plugin>mock_components/GenericSystem</plugin>
+          <param name="fake_sensor_commands">false</param>
+          <param name="state_following_offset">0.0</param>
+        </xacro:if>
+        <xacro:unless value="${use_fake_hardware}">
+          <plugin>cnr::comau::ComauC5GopenHw</plugin>
+          <param name="mqtt_broker_ip">${mqtt_broker_ip}</param>
+          <param name="mqtt_client_id">${mqtt_client_id}</param>
+          <param name="mqtt_port">${mqtt_port}</param>
+          <param name="mqtt_loop_timeout">${mqtt_loop_timeout}</param>
+          <param name="topic_fdb_pos_name">${topic_fdb_pos_name}</param>
+          <param name="topic_fdb_vel_name">${topic_fdb_vel_name}</param>
+          <param name="topic_cmd_name">${topic_cmd_name}</param>
+          <param name="read_only">${read_only}</param>
+        </xacro:unless>
+      </hardware>
+      <joint name="${prefix}joint_1">
+        <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+      </joint>
+      <joint name="${prefix}joint_2">
+        <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+      </joint>
+      <joint name="${prefix}joint_3">
+        <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+      </joint>
+      <joint name="${prefix}joint_4">
+        <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+      </joint>
+      <joint name="${prefix}joint_5">
+        <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+      </joint>
+      <joint name="${prefix}joint_6">
+        <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+      </joint>
+    </ros2_control>
+  </xacro:macro>
+</robot>
