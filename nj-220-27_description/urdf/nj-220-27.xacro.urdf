@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<robot name="nj-220-27" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<xacro:include filename="$(find nj-220-27_description)/urdf/nj-220-27.xacro" />
+
+<xacro:property name="prefix" value="''" />
+
+<xacro:arg name="use_fake_hardware" default="true"/>
+
+<link name="world"/>
+  <xacro:nj-220-27 prefix="${prefix}" use_fake_hardware="$(arg use_fake_hardware)"/>
+  <joint name="${prefix}world_to_base_link" type="fixed">
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <parent link="world"/>
+      <child link="${prefix}base_link"/>
+  </joint>
+</robot>

@@ -1,0 +1,752 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <xacro:macro name="nj-220-27_robot" params="prefix:=''">
+  
+  <xacro:include filename="$(find nj-220-27_description)/urdf/comau_common.macro.xacro" />
+  
+  <link name="${prefix}base_link">
+    <inertial>
+      <origin
+        xyz="-0.0358167402452248 -1.21314140915355E-05 0.133200705408254"
+        rpy="0 0 0" />
+      <mass
+        value="716.304098258139" />
+      <inertia
+        ixx="23.6539520200965"
+        ixy="-0.00216519532640636"
+        ixz="0.00704292145205688"
+        iyy="30.8615363395034"
+        iyz="2.35282779338614E-05"
+        izz="44.0968369252056" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/base_link.stl" />
+      </geometry>
+    <xacro:c_d_grey/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/base_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="${prefix}link_1">
+    <inertial>
+      <origin
+        xyz="0.280527389912185 0.0253806880697402 0.399602005176669"
+        rpy="0 0 0" />
+      <mass
+        value="82.6779259027705" />
+      <inertia
+        ixx="4.86714415008286"
+        ixy="0.0640639032032135"
+        ixz="-1.2727241567326"
+        iyy="4.1383356970897"
+        iyz="0.0199335546802889"
+        izz="4.67474730426157" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/Link1.stl" />
+      </geometry>
+    <xacro:c_grey/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/Link1.stl" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="${prefix}joint_1"
+    type="revolute">
+    <origin
+      xyz="0 0 0.326"
+      rpy="0 0 0" />
+    <parent
+      link="${prefix}base_link" />
+    <child
+      link="${prefix}link_1" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+
+  <link name="${prefix}link_2">
+    <inertial>
+      <origin
+        xyz="0.0184078389808051 -0.00325789105063484 0.513835883118244"
+        rpy="0 0 0" />
+      <mass
+        value="111.905251982348" />
+      <inertia
+        ixx="20.4210635321431"
+        ixy="0.00151915289510509"
+        ixz="-0.100648885394564"
+        iyy="20.1523061986507"
+        iyz="0.433757115615747"
+        izz="2.06210246835891" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/Link2.stl" />
+      </geometry>
+      <xacro:c_grey/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/Link2.stl" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="${prefix}joint_2"
+    type="revolute">
+    <origin
+      xyz="0.4 0 0.504"
+      rpy="0 0 0" />
+    <parent
+      link="${prefix}link_1" />
+    <child
+      link="${prefix}link_2" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.785"
+      upper="1.6625"
+      effort="0"
+      velocity="0" />
+  </joint>
+
+  <link name="${prefix}link_3">
+    <inertial>
+      <origin
+        xyz="-0.0584887541570651 0.0263801657921651 0.213499546265665"
+        rpy="0 0 0" />
+      <mass
+        value="157.757335033135" />
+      <inertia
+        ixx="5.30261821648555"
+        ixy="0.160545836453543"
+        ixz="-0.118711868896"
+        iyy="3.30672932516305"
+        iyz="-0.56382509349571"
+        izz="4.09615069496347" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/Link3.stl" />
+      </geometry>
+      <xacro:c_grey/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/Link3.stl" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="${prefix}joint_3"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="${prefix}link_3_virtual" />
+    <child
+      link="${prefix}link_3" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-4.4657"
+      upper="0.1744"
+      effort="0"
+      velocity="0" />
+  </joint>
+
+  <link name="${prefix}link_4">
+    <inertial>
+      <origin
+        xyz="0.588887352252677 -0.0172955644631127 -2.62021746335606E-05"
+        rpy="0 0 0" />
+      <mass
+        value="51.3013365086892" />
+      <inertia
+        ixx="0.354847132187087"
+        ixy="0.0628009903967938"
+        ixz="-0.000814607034694194"
+        iyy="2.77815362513875"
+        iyz="0.000490930997027401"
+        izz="2.81007925239704" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/Link4.stl" />
+      </geometry>
+      <xacro:c_grey/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/Link4.stl" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="${prefix}joint_4"
+    type="revolute">
+    <origin
+      xyz="0.105 0 0.25"
+      rpy="0 0 0" />
+    <parent
+      link="${prefix}link_3" />
+    <child
+      link="${prefix}link_4" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+
+  <link name="${prefix}link_5">
+    <inertial>
+      <origin
+        xyz="0.0907543704968141 0.0150627858650822 2.49569477448475E-05"
+        rpy="0 0 0" />
+      <mass
+        value="46.4243164441874" />
+      <inertia
+        ixx="0.612926086116499"
+        ixy="0.0242043388145861"
+        ixz="1.7082298658805E-05"
+        iyy="0.355318837424559"
+        iyz="-9.12438948245033E-05"
+        izz="0.794223395433751" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/Link5.stl" />
+      </geometry>
+      <xacro:c_d_grey/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/Link5.stl" />
+      </geometry>
+    </collision>
+  </link> 
+
+  <joint name="${prefix}joint_5"
+    type="revolute">
+    <origin
+      xyz="1.0203 0 0"
+      rpy="0 0 0" /> <!-- 1.0203 --> 
+    <parent
+      link="${prefix}link_4" />
+    <child
+      link="${prefix}link_5" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-2.182"
+      upper="2.182"
+      effort="0"
+      velocity="0" />
+  </joint>
+
+  <link name="${prefix}link_6">
+    <inertial>
+      <origin
+        xyz="-0.0156406353982061 -0.000609515326297944 -5.99002442744911E-05"
+        rpy="0 0 0" />
+      <mass
+        value="5.30965928979938" />
+      <inertia
+        ixx="0.0289484687068404"
+        ixy="-1.07974969002276E-05"
+        ixz="-1.18901729051513E-06"
+        iyy="0.0150500625378697"
+        iyz="-5.62155117902074E-06"
+        izz="0.0149077305882135" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/Link6.stl" />
+      </geometry>
+      <xacro:c_d_grey/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/Link6.stl" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="${prefix}joint_6"
+    type="revolute">
+    <origin
+      xyz="0.230 0 0"
+      rpy="0 0 0" /> <!-- 0.230 -->
+    <parent
+      link="${prefix}link_5" />
+    <child
+      link="${prefix}link_6" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+
+
+
+ <!-- Parallel Linkages  -->
+  <link name="${prefix}link_3_virtual"></link>
+
+  <joint name="${prefix}joint_2m" type="continuous">
+    <origin xyz="0 0 1.175" rpy="0 0 0" />
+    <parent link="${prefix}link_2" />
+    <child link="${prefix}link_3_virtual" />
+    <axis xyz="0 1 0" />
+    <mimic joint="${prefix}joint_2" multiplier="-1" offset="-1.57079632679" />
+  </joint>
+
+  <link name="${prefix}link_2_1">
+    <inertial>
+      <origin
+        xyz="-0.146250774103058 0.0236870905423788 -0.0194173478890076"
+        rpy="0 0 0" />
+      <mass
+        value="38.5786401074048" />
+      <inertia
+        ixx="0.155791342569104"
+        ixy="0.0187273364995714"
+        ixz="-0.0757762489273389"
+        iyy="0.762185110313154"
+        iyz="0.00165210939595095"
+        izz="0.670183638579134" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/Link2_1.stl" />
+      </geometry>
+      <xacro:c_d_grey/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/Link2_1.stl" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="${prefix}joint_2_1"
+    type="continuous">
+    <origin
+      xyz="0.4 -0.1945 0.504"
+      rpy="0 0 0" />
+    <parent
+      link="${prefix}link_1" />
+    <child
+      link="${prefix}link_2_1" />
+    <axis
+      xyz="0 -1 0" />
+    <mimic joint="${prefix}joint_3" multiplier="1" offset="1.57079632679" />
+  </joint>
+
+  <link name="${prefix}link_2_2_virtual"></link>
+
+  <joint name="${prefix}joint_2_2"
+    type="continuous">
+    <origin
+      xyz="-0.34867 0.015 -0.030505"
+      rpy="0 0 0" />
+    <parent
+      link="${prefix}link_2_1" />
+    <child
+      link="${prefix}link_2_2_virtual" />
+    <axis
+      xyz="0 -1 0" />
+    <mimic joint="${prefix}joint_3" multiplier="-1" offset="0"/>
+  </joint>
+
+  <link name="${prefix}link_2_2">
+    <inertial>
+      <origin
+        xyz="-0.0652978041330567 0.0148769250219642 0.522179990293122"
+        rpy="0 0 0" />
+      <mass
+        value="59.3964904014822" />
+      <inertia
+        ixx="5.50105815263556"
+        ixy="-0.000844425764676453"
+        ixz="-0.148092938299182"
+        iyy="5.5899998591068"
+        iyz="-0.00248734828280709"
+        izz="0.140827249571413" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/Link2_3.stl" />
+      </geometry>
+      <xacro:c_d_grey/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/Link2_3.stl" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="${prefix}joint_2_3" type="continuous">
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+    <parent link="${prefix}link_2_2_virtual" />
+    <child link="${prefix}link_2_2" />
+    <axis xyz="0 -1 0" />
+    <mimic joint="${prefix}joint_2" multiplier="-1" offset="-1.57079632679"/>
+  </joint>
+
+<!-- End Parallel Linkages -->
+
+
+  <!-- Stroke Ends -->
+  <link name="${prefix}link_2_1_1">
+    <inertial>
+      <origin
+        xyz="-0.241098957770663 0.0135000000000001 -0.11521333110147"
+        rpy="0 0 0" />
+      <mass
+        value="0.843150000000002" />
+      <inertia
+        ixx="0.000339977263228583"
+        ixy="-1.59752076485447E-19"
+        ixz="1.09808595749897E-05"
+        iyy="0.000298615625000002"
+        iyz="-1.48242991488237E-19"
+        izz="0.00046452836177142" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/Link2_2.stl" />
+      </geometry>
+      <xacro:c_d_grey/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/Link2_2.stl" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="${prefix}joint_2_1_1"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="${prefix}link_2_1" />
+    <child
+      link="${prefix}link_2_1_1" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+  <link name="${prefix}link_2_4">
+    <inertial>
+      <origin
+        xyz="-0.00960691693177775 0.0130000000000002 0.307689752924215"
+        rpy="0 0 0" />
+      <mass
+        value="0.936000000000003" />
+      <inertia
+        ixx="0.000897044583500436"
+        ixy="-2.55944467377356E-20"
+        ixz="-7.37878590712161E-05"
+        iyy="0.000850200000000006"
+        iyz="-6.18500314798765E-20"
+        izz="0.000202755416499572" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/Link2_4.stl" />
+      </geometry>
+      <xacro:c_d_grey/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/Link2_4.stl" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="${prefix}joint_2_4"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="${prefix}link_2_2" />
+    <child
+      link="${prefix}link_2_4" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+  <link name="${prefix}link_2_5">
+    <inertial>
+      <origin
+        xyz="-0.0433974889296701 0.150500000000001 0.245908509129153"
+        rpy="0 0 0" />
+      <mass
+        value="0.84315" />
+      <inertia
+        ixx="0.000458856248315521"
+        ixy="1.0954175112641E-18"
+        ixz="3.26013232746297E-05"
+        iyy="0.0003390165625"
+        iyz="-9.21826880351831E-19"
+        izz="0.000305248439184479" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/Link2_5.stl" />
+      </geometry>
+      <xacro:c_d_grey/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/Link2_5.stl" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="${prefix}joint_2_5"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="${prefix}link_2" />
+    <child
+      link="${prefix}link_2_5" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+  <link name="${prefix}link_2_6">
+    <inertial>
+      <origin
+        xyz="-0.0723946041972056 -0.124999999999999 0.330589651585861"
+        rpy="0 0 0" />
+      <mass
+        value="0.876000000000002" />
+      <inertia
+        ixx="0.000761485553782322"
+        ixy="-2.27914523329114E-19"
+        ixz="0.000222251730902092"
+        iyy="0.000795700000000003"
+        iyz="1.55143364770849E-18"
+        izz="0.000267814446217681" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/Link2_6.stl" />
+      </geometry>
+      <xacro:c_d_grey/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/Link2_6.stl" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="${prefix}joint_2_6"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="${prefix}link_2" />
+    <child
+      link="${prefix}link_2_6" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+  <link name="${prefix}link_2_7">
+    <inertial>
+      <origin
+        xyz="0.0532112500694312 0.150500000000002 0.243986168833965"
+        rpy="0 0 0" />
+      <mass
+        value="0.843150000000003" />
+      <inertia
+        ixx="0.000458856248315524"
+        ixy="1.2742833716982E-18"
+        ixz="-3.26013232746302E-05"
+        iyy="0.000339016562500003"
+        iyz="1.95092854909731E-18"
+        izz="0.00030524843918448" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/Link2_7.stl" />
+      </geometry>
+      <xacro:c_d_grey/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://nj-220-27_description/meshes/Link2_7.stl" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="${prefix}joint_2_7"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="${prefix}link_2" />
+    <child
+      link="${prefix}link_2_7" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+  <!-- End Stroke End -->
+
+  <link name="${prefix}flange"/>
+
+  <joint name="${prefix}joint_flange" type="fixed">
+    <origin xyz="0 0 0" rpy="0 1.57079632679 0" />
+    <parent link="${prefix}link_6" />
+    <child link="${prefix}flange" /> 
+  </joint> -->
+
+  </xacro:macro>
+
+</robot>

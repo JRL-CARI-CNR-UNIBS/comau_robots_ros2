@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+
+  <param name="robot/name" type="str" value="nj-220-27" />
+
+  <arg name="pos_x" default="0.0"/>
+  <arg name="pos_y" default="0.0"/>
+  <arg name="pos_z" default="0.0"/>
+  <arg name="roll" default="0.0"/>
+  <arg name="pitch" default="0.0"/>
+  <arg name="yaw" default="0.0"/>
+
+  <arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface" />
+
+  <param name="robot_description" command="$(find xacro)/xacro '$(find nj-220-27_descriptions)/robots/nj-220-27_robot.urdf.xacro' 
+                                          pos_x:=$(arg pos_x) pos_y:=$(arg pos_y) pos_z:=$(arg pos_z) 
+                                          roll:=$(arg roll) pitch:=$(arg pitch) yaw:=$(arg yaw) 
+                                          transmission_hw_interface:=$(arg transmission_hw_interface)" />
+
+</launch>

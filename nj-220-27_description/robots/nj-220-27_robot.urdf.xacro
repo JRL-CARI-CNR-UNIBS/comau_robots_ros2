@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="nj-220-27">
+
+  <!-- 
+    Author: LMS
+   -->
+   
+  <xacro:arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface"/>
+
+  <!-- common stuff - empty at the moment-->
+  <xacro:include filename="$(find nj-220-27_descriptions)/urdf/common.gazebo.xacro" />
+
+  <!--load nj-220-27 -->
+  <xacro:include filename="$(find nj-220-27_descriptions)/urdf/nj-220-27/nj-220-27.urdf.xacro" />
+
+  <!--load Gripper -->
+  <xacro:include filename="$(find nj-220-27_descriptions)/urdf/nj-220-27/gripper.xacro" />
+
+  <!-- load environment -->
+  <xacro:include filename="$(find nj-220-27_descriptions)/urdf/nj-220-27/environment.xacro" />
+
+  <!-- arm -->
+  <xacro:nj-220-27_robot prefix="" transmission_hw_interface="$(arg transmission_hw_interface)"/>
+  
+  <!-- Tools -->
+  <xacro:gripper prefix=""/>
+
+  <!-- Environment -->
+  <xacro:environment prefix=""/>
+  
+
+  <!-- World Joint Position -->
+  <xacro:arg name="pos_x" default="0"/>
+  <xacro:arg name="pos_y" default="0"/>
+  <xacro:arg name="pos_z" default="0"/>
+  <xacro:arg name="roll" default="0"/>
+  <xacro:arg name="pitch" default="0"/>
+  <xacro:arg name="yaw" default="0"/>
+
+  <link name="world" />
+
+  <joint name="world_joint" type="fixed">
+    <parent link="world" />
+    <child link = "base_link" />
+    <origin xyz="$(arg pos_x) $(arg pos_y) $(arg pos_z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)" />
+  </joint>
+
+  
+
+</robot>
