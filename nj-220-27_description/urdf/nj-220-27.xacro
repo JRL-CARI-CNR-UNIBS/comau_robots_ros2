@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="nj-220-27" params="prefix:='' transmission_hw_interface:=hardware_interface/EffortJointInterface use_fake_hardware">
+
+    <xacro:include filename="$(find nj-220-27_description)/urdf/nj-220-27_robot.xacro" />
+    <xacro:nj-220-27_robot prefix="${prefix}"/>
+
+    <xacro:include filename="$(find nj-220-27_description)/urdf/nj-220-27_transmission.xacro" />
+    <xacro:nj-220-27_transmission prefix="${prefix}" hw_interface="${transmission_hw_interface}"/>
+
+    <xacro:include filename="$(find nj-220-27_description)/urdf/nj-220-27_ros2_control.xacro" />
+    <xacro:nj-220-27_ros2_control prefix="${prefix}" 
+                                  name="nj-220-27"
+                                  use_fake_hardware="${use_fake_hardware}"/>
+                                   
+  
+  </xacro:macro>
+</robot>
