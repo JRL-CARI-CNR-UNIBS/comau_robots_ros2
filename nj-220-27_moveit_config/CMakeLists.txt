@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(nj-220-27_moveit_configs)
+project(nj-220-27_moveit_config)
 
 find_package(ament_cmake REQUIRED)
 
