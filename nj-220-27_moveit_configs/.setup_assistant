@@ -1,0 +1,25 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: nj-220-27_description
+    relative_path: urdf/nj-220-27.xacro.urdf
+  srdf:
+    relative_path: config/nj-220-27.srdf
+  package_settings:
+    author_name: Enrico Villagrossi
+    author_email: enrico.villagrossi@cnr.it
+    generated_timestamp: 1710147869
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
