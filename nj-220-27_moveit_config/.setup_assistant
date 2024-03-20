@@ -5,9 +5,9 @@ moveit_setup_assistant_config:
   srdf:
     relative_path: config/nj-220-27.srdf
   package_settings:
-    author_name: Enrico Villagrossi
-    author_email: enrico.villagrossi@cnr.it
-    generated_timestamp: 1710147869
+    author_name: Cesare Tonola
+    author_email: c.tonola001@unibs.it
+    generated_timestamp: 1710320837
   control_xacro:
     command:
       - position
