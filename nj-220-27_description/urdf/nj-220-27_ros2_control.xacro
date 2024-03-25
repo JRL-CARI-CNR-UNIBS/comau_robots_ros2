@@ -3,7 +3,7 @@
   <xacro:macro name="nj-220-27_ros2_control" params="name
                                                       prefix
                                                       use_fake_hardware:=true
-                                                      mqtt_broker_ip:=10.7.7.246
+                                                      mqtt_broker_ip:=10.7.7.245
                                                       mqtt_client_id:=comau_c5gopen_hw_mqtt_client
                                                       mqtt_port:=1883
                                                       mqtt_loop_timeout:=1
