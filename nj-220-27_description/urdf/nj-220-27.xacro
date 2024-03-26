@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:macro name="nj-220-27" params="prefix:=''
-                                        transmission_hw_interface:=hardware_interface/EffortJointInterface use_fake_hardware
+                                        transmission_hw_interface:=hardware_interface/EffortJointInterface 
                                         use_fake_hardware:=true
                                         mqtt_broker_ip:=10.7.7.245
                                         mqtt_client_id:=comau_c5gopen_hw_mqtt_client
